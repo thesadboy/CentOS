@@ -8,3 +8,5 @@ sh ./node-install.sh
 echo "download shadowsocks.sh"
 wget https://raw.githubusercontent.com/thesadboy/CentOS/master/shadowsocks.sh
 sh ./shadowsocks.sh
+echo "clean"
+rm -rf node-install.sh pptpd.sh shadowsocks.sh
