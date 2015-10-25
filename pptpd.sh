@@ -28,6 +28,9 @@ fi
 echo "${name}   pptpd   ${pass}     *" >> /etc/ppp/chap-secrets
 
 iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j SNAT --to-source `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk 'NR==1 { print $1}'`
+iptables -A INPUT -p tcp --dport 47 -j ACCEPT
+iptables -A INPUT -p UDP --dport 53 -j ACCEPT
+iptables -A INPUT -p gre -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT
 iptables -A FORWARD -p tcp --syn -s 192.168.10.0/24 -j TCPMSS --set-mss 1356
 service iptables save
