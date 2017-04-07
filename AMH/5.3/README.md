@@ -1,6 +1,3 @@
-国外的服务器的话绑定一下：
-echo "122.114.118.221 github.lqmz.cc" >> /etc/hosts
-
 AMH 5.3 破解版 极速安装：
 
   wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log
