@@ -1,13 +1,13 @@
 AMH 5.3 破解版 极速安装：
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log
-
-
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log && rm -rf amh-pj.sh
+  
+  
 AMH5.3 破解版 编译安装：
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh gcc 2>&1 | tee amh.log
-
-
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh gcc 2>&1 | tee amh.log && rm -rf amh-pj.sh
+  
+  
 破解说明：
 
   1.去除授权，去除文件完整性验证
@@ -26,21 +26,26 @@ amh5.3完整版：
 
 AMH5.3 完整版 极速安装：
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh 2>&1 | tee amh.log
-
-
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh 2>&1 | tee amh.log && rm -rf amh-wz.sh
+  
+  
 AMH5.3  完整版 编译安装：
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh gcc 2>&1 | tee amh.log
-
-
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh gcc 2>&1 | tee amh.log && rm -rf amh-wz.sh
+  
+  
 AMH5.3 一键转换为破解版（安装过之前的破解版或官方版的可转换为最新破解版）
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-convert.sh && bash amh-convert.sh
-
-
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-convert.sh && bash amh-convert.sh && rm -rf amh-convert.sh
+  
+  
 提示：安装完之后需要在左侧手动点击【更新缓存数据】
 
+AMH5.3 卸载脚本
+
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-uninstall.sh && bash amh-uninstall.sh && rm -rf amh-uninstall.sh
+  
+  
 AMH官网：http://amh.sh/
 
 破解版仅供学习交流之用，禁止用于商业用途，如果喜欢请支持正版。
