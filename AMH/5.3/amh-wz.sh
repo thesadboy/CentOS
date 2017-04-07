@@ -152,7 +152,7 @@ function InstallReady()
 	mkdir -p /root/amh/{modules,conf};
 	mkdir -p /home/{wwwroot,usrdata};
 	cd /tmp/;
-	wget http://github.lqmz.cc/amh/files/${AMHConfVersion}.tar.gz;
+	wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/${AMHConfVersion}.tar.gz --no-check-certificate;
 	tar -zxvf ${AMHConfVersion}.tar.gz;
 	\cp -a ./${AMHConfVersion}/conf /root/amh/;
 	chmod -R 775 /root/amh/conf /root/amh/modules;

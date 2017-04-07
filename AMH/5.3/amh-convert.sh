@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 
 cd /root/;
 rm -rf convert;
-wget http://github.lqmz.cc/amh/files/convert.tar.gz;
+wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/convert.tar.gz  --no-check-certificate;
 tar -zxvf convert.tar.gz;
 \cp -a ./convert/web/* /usr/local/amh-5.3/web;
 chmod -R 775 /usr/local/amh-5.3/web;
