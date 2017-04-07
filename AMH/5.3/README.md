@@ -1,11 +1,11 @@
 AMH 5.3 破解版 极速安装：
 
-  wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log
 
 
 AMH5.3 破解版 编译安装：
 
-  wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh gcc 2>&1 | tee amh.log
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh gcc 2>&1 | tee amh.log
 
 
 破解说明：
@@ -26,17 +26,17 @@ amh5.3完整版：
 
 AMH5.3 完整版 极速安装：
 
-  wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh 2>&1 | tee amh.log
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh 2>&1 | tee amh.log
 
 
 AMH5.3  完整版 编译安装：
 
-  wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh gcc 2>&1 | tee amh.log
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-wz.sh && bash amh-wz.sh gcc 2>&1 | tee amh.log
 
 
 AMH5.3 一键转换为破解版（安装过之前的破解版或官方版的可转换为最新破解版）
 
-  wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-convert.sh && bash amh-convert.sh
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-convert.sh && bash amh-convert.sh
 
 
 提示：安装完之后需要在左侧手动点击【更新缓存数据】
