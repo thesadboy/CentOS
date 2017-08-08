@@ -1,6 +1,6 @@
 AMH 5.3 破解版 极速安装：
 
-  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh-pj.sh && bash amh-pj.sh 2>&1 | tee amh.log && rm -rf amh-pj.sh
+  wget --no-check-certificate https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/amh.sh && bash amh.sh 2>&1 | tee amh.log && rm -rf amh.sh
   
   
 AMH5.3 破解版 编译安装：

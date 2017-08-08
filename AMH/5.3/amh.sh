@@ -149,7 +149,7 @@ function InstallReady()
 	mkdir -p /root/amh/{modules,conf};
 	mkdir -p /home/{wwwroot,usrdata};
 	cd /tmp/;
-	wget http://${MirrorHost}/files/${AMHConfVersion}.tar.gz -O ${AMHConfVersion}.tar.gz;
+	wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/${AMHConfVersion}.tar.gz --no-check-certificate;
 	tar -zxvf ${AMHConfVersion}.tar.gz;
 	\cp -a ./${AMHConfVersion}/conf /root/amh/;
 	sed -i 's/curl -r/curl -d "new=y" -r/' /root/amh/conf/amh-base;
@@ -181,20 +181,6 @@ function InstallBaseModule()
 	amh ${NginxVersion} install && \
 	amh ${AMHVersion} install ${NginxVersion} ${MysqlVersion} ${PhpVersion} ${DefaultPassword} ${DefaultPassword} ${InstallFrom} && InstallStatus='success';
 }
-function Convert()
-{
-	cd /root/;
-	rm -rf convert;
-	wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/convert.tar.gz  --no-check-certificate;
-	tar -zxvf convert.tar.gz;
-	\cp -a ./convert/web/* /usr/local/amh-5.3/web;
-	chmod -R 775 /usr/local/amh-5.3/web;
-	\cp -a ./convert/amh-base /root/amh/conf;
-	chmod -R 775 /root/amh/conf/amh-base;
-	\cp -a ./convert/AMHScript /root/amh/modules/amh-5.3;
-	chmod -R 775 /root/amh/modules/amh-5.3/AMHScript;
-	rm -rf convert convert.tar.gz;
-}
 
 
 # AMH Installing ****************************************************************************
@@ -204,7 +190,7 @@ ConfirmInstall;
 CloseSelinux;
 InstallReady;
 InstallBaseModule;
-Convert;
+
 
 echo '==========================================================================';
 if [ "${InstallStatus}" == 'success' ]; then
