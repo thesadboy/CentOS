@@ -4,15 +4,15 @@ export PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:
 function amh_init()
 {
 	MirrorGroup=(
-		'amysql [USA,JP,ALL] http://code.amh.sh/files/'
-		'amysql [USA,JP,ALL] http://code1.amh.sh/files/'
-		'amysql [CN,ALL] http://code2.amh.sh/files/'
-		'amysql [CN,ALL] http://code3.amh.sh/files/'
-		'amysql [ALL] http://code4.amh.sh/files/'
-		'amysql [ALL] http://code5.amh.sh/files/'
+		'amysql [USA,JP,ALL] http://code.qzone8.cc/files/'
+		'amysql [USA,JP,ALL] http://code.qzone8.cc/files/'
+		'amysql [CN,ALL] http://code.qzone8.cc/files/'
+		'amysql [CN,ALL] http://code.qzone8.cc/files/'
+		'amysql [ALL] http://code.qzone8.cc/files/'
+		'amysql [ALL] http://code.qzone8.cc/files/'
 	);
 	amh_v='5.3';
-	api_s='http://amh.sh/api';
+	api_s='http://amh.qzone8.cc';
 	amh_home='/root/amh';
 	amh_www='/usr/local/amh-'${amh_v};
 	amh_base_functions=`typeset -F`;
@@ -243,7 +243,7 @@ function amh_wget()
 		FastestMirror=`echo -e "${MirrorSpeed[@]}" | sort -nr`;
 		mirror=`echo ${FastestMirror[*]} | cut -d ' ' -f2 | head -1`;
 
-		FileNameLast=`echo $FileName | awk -F "/" '{print $NF}' | awk -F '?' '{print $1}'`;
+		FileNameLast=`echo $FileName | awk -F "/" '{print $NF}'`;
 		rm -f ${FileNameLast};
 		wget ${MirrorUrl[$mirror]// /}${FileName} -O ${FileNameLast};
 
@@ -279,9 +279,9 @@ function amh_wget()
 		FileName=`echo "$FileName" | cut -d ',' -f $[mirror+1]`;
 		IFS=$OldIFS;
 
-		FileNameLast=`echo $FileName | awk -F "/" '{print $NF}' | awk -F '?' '{print $1}'`;
+		FileNameLast=`echo $FileName | awk -F "/" '{print $NF}'`;
 		rm -f ${FileNameLast};
-		wget $FileName -O ${FileNameLast};
+		wget $FileName;
 
 		DownFileMD5=`md5sum $FileNameLast | cut -d ' ' -f1`;
 		if [ "$DownFileMD5" != "$FileMD5" ]; then

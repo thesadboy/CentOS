@@ -43,9 +43,22 @@ function amh_module()
 		&& [ "$module_name" == '' ] && amh_module download;
 		[ -d "${amh_home}/modules/${module_name}" ] && [ "$module_rup" == '' ] && echo "[Error] ${module_name} is already exist." && return 1;
 
+		if [ -L "/bin/mysql" -a -f "${amh_www}/web/Amysql/Config.php" ]; then
+		MysqlPass=`cat ${amh_www}/web/Amysql/Config.php | awk '{ FS="\047Password\047] = \047"; RS="\047;" } { print $2}' | sed '/^$/d'`;
+		MysqlV=`cat ${amh_www}/etc/amh-base.conf | grep mysql`;
+		for account_value in `mysql -uroot -p${MysqlPass} -S /tmp/${MysqlV}.sock -B -N -e "SET NAMES utf8;SELECT config_value FROM amh.amh_config WHERE config_name LIKE 'WebKey%' ORDER BY config_name DESC "`; do
+			webkey_array[${#webkey_array[*]}+1]=$account_value;
+		done;
+		fi;
+
 		module_name=${module_name// /};
 		module_name=${module_name//\/};
-		post_data_key='{"module_name":"'${module_name}'","amh_v":"'${amh_v}'"}';
+		if [ "${webkey_array[5]}" == '' ]; then
+			post_data_key='{"module_name":"'${module_name}'","amh_v":"'${amh_v}'"}';
+		else
+			post_data='{"username":"'${webkey_array[1]}'","uid":"'${webkey_array[2]}'", "webkey":"'${webkey_array[4]}'", "module_name":"'${module_name}'","amh_v":"'${amh_v}'"}';
+			post_data_key=`echo $post_data | openssl enc -aes-256-cbc -salt -k ${webkey_array[5]} -base64`;
+		fi;
 		post_data_key=`amh_urlencode "$post_data_key"`;
 		http_code=`curl -d "keydata=$post_data_key" -w %{http_code} --connect-timeout 5 --retry 3 -o ${amh_home}/modules/${module_name}.module.tar.gz ${api_s}/amh_module_download.htm`;
 		if [ "$http_code" == '200' ]; then
