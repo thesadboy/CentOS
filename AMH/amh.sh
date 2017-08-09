@@ -5,9 +5,12 @@ export PATH
 clear;
 # Logo 	******************************************************************
 CopyrightLogo='
-                                   AMH 5.3                                  
-                            Powered by amh.sh 2006-2015                     
-                         http://amh.sh All Rights Reserved                  
+                                  AMH 5.3                                  
+                            Powered by amh.sh 2006-2016 
+		破解版仅供学习交流之用，禁止用于商业用途。
+				如果喜欢请支持正版。							
+                         http://amh.sh All Rights Reserved 
+		QQ835634279		kangle交流群：237770202                    
                                                                             
 ==========================================================================';
 echo "$CopyrightLogo";
@@ -92,7 +95,7 @@ function SetPassword()
 	else
 		echo '[OK] Your AMH and MySQL password is:';
 		echo $DefaultPassword;
-	echo '==========================================================================';
+		echo '==========================================================================';
 	fi;
 }
 
@@ -126,7 +129,7 @@ function InstallReady()
 			release_n='5' && grep 'release 6' /etc/issue && release_n='6';
 			basearch_n='i386' && [ "$SysBit" == '64' ] && basearch_n='x86_64';
 			cd /etc/yum.repos.d;
-			wget http://${MirrorHost}/files/amh-redhat${release_n}-base.repo -O amh-redhat${release_n}-base.repo;
+			wget http://${MirrorHost}/files/amh-redhat${release_n}-base.repo;
 			sed -i "s#\$releasever#$release_n#g" amh-redhat${release_n}-base.repo;
 			sed -i "s#\$basearch#$basearch_n#g" amh-redhat${release_n}-base.repo;
 			yum clean all;
@@ -149,12 +152,9 @@ function InstallReady()
 	mkdir -p /root/amh/{modules,conf};
 	mkdir -p /home/{wwwroot,usrdata};
 	cd /tmp/;
-	wget https://raw.githubusercontent.com/thesadboy/CentOS/master/AMH/5.3/${AMHConfVersion}.tar.gz --no-check-certificate;
+	wget http://amh.lvdp.net/files/${AMHConfVersion}.tar.gz;
 	tar -zxvf ${AMHConfVersion}.tar.gz;
 	\cp -a ./${AMHConfVersion}/conf /root/amh/;
-	sed -i 's/curl -r/curl -d "new=y" -r/' /root/amh/conf/amh-base;
-	sed -i 's/-O/--post-data="new=y" -O/' /root/amh/conf/amh-base;
-	sed -i 's/TimeOut=1/TimeOut=2/' /root/amh/conf/amh-base;
 	chmod -R 775 /root/amh/conf /root/amh/modules;
 	gcc -o /bin/amh -Wall ./${AMHConfVersion}/conf/amh.c;
 	chmod 4775 /bin/amh;
@@ -169,6 +169,23 @@ function InstallBaseModule()
 	amh download ${NginxVersion};
 	amh download ${PhpVersion};
 	amh download ${AMHVersion};
+	amh download php-7.0;
+	amh download pure-ftpd-1.0.36;
+	amh download lnmp-2.7;
+	amh download amftp-2.5;
+	amh download madmin-1.8;
+	amh download phpmyadmin-4.0.10.14;
+	amh download amrewrite-1.5;
+	amh download opcache-1.0;
+	amh download amcrontab-1.2;
+	amh download amnetwork-2.1;
+	amh download amchroot-1.5.1;
+	amh download d-cpu-1.6;
+	amh download d-disk-1.5;
+	amh download d-io-1.0;
+	amh download d-net-1.5;
+	amh download d-os-1.0;
+	amh download d-ram-1.5;
 
 	module_arr=("${LibiconvVersion}" "${MysqlVersion}" "${NginxVersion}" "${PhpVersion}" "${AMHVersion}");
 	for v in ${module_arr[*]}; do
@@ -179,7 +196,18 @@ function InstallBaseModule()
 	amh ${PhpVersion} install && \
 	amh ${MysqlVersion} install ${DefaultPassword} && \
 	amh ${NginxVersion} install && \
-	amh ${AMHVersion} install ${NginxVersion} ${MysqlVersion} ${PhpVersion} ${DefaultPassword} ${DefaultPassword} ${InstallFrom} && InstallStatus='success';
+	amh ${AMHVersion} install ${NginxVersion} ${MysqlVersion} ${PhpVersion} ${DefaultPassword} ${DefaultPassword} ${InstallFrom} && \
+	amh php-7.0 install && \
+	amh pure-ftpd-1.0.36 install && \
+	amh lnmp-2.7 install && \
+	amh amftp-2.5 install && \
+	amh madmin-1.8 install && \
+	amh phpmyadmin-4.0.10.14 install && \
+	amh amrewrite-1.5 install && \
+	amh opcache-1.0 install && \
+	amh amcrontab-1.2 install && \
+	amh amnetwork-2.1 install && \
+	amh amchroot-1.5.1 install && InstallStatus='success';
 }
 
 
@@ -190,7 +218,6 @@ ConfirmInstall;
 CloseSelinux;
 InstallReady;
 InstallBaseModule;
-
 
 echo '==========================================================================';
 if [ "${InstallStatus}" == 'success' ]; then
